@@ -1,0 +1,31 @@
+<h1>search for a book</h1>
+
+<div id="searchstuff">
+  <% if @book %>
+    <p>you have searched for "<%= @book %>"</p>
+  <% end %>
+
+
+
+  <%= form_tag("/books/searchbook", method: "get") do %>
+    <%= label_tag(:book, "Search for:") %>
+    <%= text_field_tag(:book) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+
+  <tbody>
+  <% if @books %>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= "Title: #{book["volumeInfo"]["title"]}" %></td><br>
+        <td><%= "Author(s): #{book["volumeInfo"]["authors"]}" %></td><br>
+        <td><%= image_tag("#{book["volumeInfo"]["imageLinks"]["thumbnail"]}", :alt => "rss feed") %></td>
+        <td><%= link_to("#{book["volumeInfo"]["infoLink"]}") %></td>
+        <br><p>
+        <br><p>
+      </tr>
+    <% end %>
+  </tbody>
+  <% end %>
+</div>

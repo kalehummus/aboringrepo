@@ -1,0 +1,38 @@
+<h1>search for a book</h1>
+
+<div id="container">
+  <%= form_for(:books, method: "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q, @query) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <% if @books.present? %>
+    <ul id="books">
+      <% @books.each do |book| %>
+        <li class="book">
+          <span class="title">
+            <%= link_to("Title: #{book["title"]}", "#{book["infoLink"]}")%>
+          </span>
+          <span class="author">
+            Author(s):
+            <% if book["authors"] %>
+              <% book["authors"].each do |x| %>
+                <%= "#{x}" %>
+              <% end %>
+            <% end %>
+          </span>
+          <span class="publisher">
+            Publishing Company:
+            <%= book["publisher"] %>
+          </span>
+          <span class="book_image">
+            <%= image_tag("#{book["imageLinks"]["thumbnail"]}", :alt => "rss feed") %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif @query.present? && @books.empty? %>
+    <p>This search returned no results</p>
+  <% end %>
+</div>

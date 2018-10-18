@@ -6,7 +6,22 @@
   margin-top: 20px;
 }
 
-#searchstuff{
+#container{
   margin-left: 20px;
+}
 
+ul#books {
+  list-style: none;
+  li.book {
+    span {
+      display: block;
+    }
+    span.title {
+      font-size: 18px;
+    }
+    a {
+      text-decoration: none;
+      color: green;
+    }
+  }
 }

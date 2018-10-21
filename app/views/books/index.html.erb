@@ -1,8 +1,8 @@
-<h1>search for a book</h1>
+<h1>Search using Google Books!</h1>
 
 <div id="container">
   <%= form_for(:books, method: "get") do %>
-    <%= label_tag(:q, "Search for:") %>
+    <%= label_tag(:q, "Enter your search keywords:") %>
     <%= text_field_tag(:q, @query) %>
     <%= submit_tag("Search") %>
   <% end %>
@@ -27,7 +27,9 @@
             <%= book["publisher"] %>
           </span>
           <span class="book_image">
-            <%= image_tag("#{book["imageLinks"]["thumbnail"]}", :alt => "rss feed") %>
+            <% if book["imageLinks"] %>
+              <%= image_tag("#{book["imageLinks"]["thumbnail"]}", :alt => "rss feed") %>
+            <% end %>
           </span>
         </li>
       <% end %>

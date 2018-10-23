@@ -1,25 +1,37 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A deployed version of this application can be viewed at https://radiant-sea-87030.herokuapp.com/
 
-Things you may want to cover:
+Ruby version: ruby-2.4.1
 
-* Ruby version
-ruby-2.3.4
+I initially started out with a script that looked like this:
+```require 'httparty'
+require 'uri'
 
-* System dependencies
+def make_url(query)
+  search_url = "https://www.googleapis.com/books/v1/volumes?q="
+  get_search = search_url + query
+end
 
-* Configuration
+def search_by_title(url)
+  response = HTTParty.get(url)
+  response["items"].each do |x|
+    puts "Title: #{x["volumeInfo"]["title"]}"
+    puts "The author(s): "
+    authors = x["volumeInfo"]["authors"]
+    authors.each do |y|
+      puts y
+    end
+  end
+end
 
-* Database creation
+puts "what book would you like to search?"
+my_search = URI.escape(gets.chomp.to_s)
+the_response = make_url(my_search)
 
-* Database initialization
+search_by_title(the_response)```
 
-* How to run the test suite
+This printed book information to the command line. I wasn't great about version control and I didn't actually start using git until I had a working rails app.
 
-* Services (job queues, cache servers, search engines, etc.)
+I used similar methods in my Books controller to what's listed above in the first version of my app.
 
-* Deployment instructions
-
-* ...
+Then, I refactored my code to make it more readable and single-use functions.

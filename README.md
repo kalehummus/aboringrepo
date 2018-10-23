@@ -1,7 +1,8 @@
 
 A deployed version of this application can be viewed at https://radiant-sea-87030.herokuapp.com/
 
-Ruby version: ruby-2.4.1
+Ruby version: 2.4.1
+Rails version: 5.2.1
 
 I initially started out with a script that looked like this:
 ```

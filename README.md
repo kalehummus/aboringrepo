@@ -28,7 +28,8 @@ puts "what book would you like to search?"
 my_search = URI.escape(gets.chomp.to_s)
 the_response = make_url(my_search)
 
-search_by_title(the_response)```
+search_by_title(the_response)
+```
 
 This printed book information to the command line. I wasn't great about version control and I didn't actually start using git until I had a working rails app.
 

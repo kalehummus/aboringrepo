@@ -4,7 +4,8 @@ A deployed version of this application can be viewed at https://radiant-sea-8703
 Ruby version: ruby-2.4.1
 
 I initially started out with a script that looked like this:
-```require 'httparty'
+```
+require 'httparty'
 require 'uri'
 
 def make_url(query)
